@@ -16,6 +16,8 @@
     const similarityFilter = document.getElementById('similarity-filter');
     const similarityValue = document.getElementById('similarity-value');
     const navButtons = document.querySelectorAll('.nav-btn');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
 
     // State
     let currentSuggestionIndex = -1;
@@ -234,7 +236,7 @@
         currentSuggestions = results;
         currentSuggestionIndex = -1;
 
-        const html = results.map((item, index) => `
+        const resultsHtml = results.map((item, index) => `
             <div class="suggestion-item" data-index="${index}">
                 <span class="suggestion-flag">${item.flag}</span>
                 <div class="suggestion-content">
@@ -245,7 +247,13 @@
             </div>
         `).join('');
 
-        suggestionsContainer.innerHTML = html;
+        const reminderHtml = `
+            <div class="suggestion-reminder">
+                The data only includes companies registered in London or NYC as of 2023 with at least 10 employees.
+            </div>
+        `;
+
+        suggestionsContainer.innerHTML = resultsHtml + reminderHtml;
         suggestionsContainer.classList.remove('hidden');
 
         // Add click handlers
@@ -441,7 +449,8 @@
         document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
         document.getElementById(`${view}-view`).classList.add('active');
         
-        navButtons.forEach(btn => {
+        // Update both desktop and mobile nav buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.view === view);
         });
 
@@ -531,8 +540,32 @@
         navButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 switchView(btn.dataset.view);
+                // Close mobile menu after selection
+                if (mobileNav && hamburger) {
+                    mobileNav.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
             });
         });
+
+        // Hamburger menu toggle
+        if (hamburger && mobileNav) {
+            hamburger.addEventListener('click', () => {
+                const isOpen = mobileNav.classList.toggle('open');
+                hamburger.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.hamburger') && !e.target.closest('.mobile-nav')) {
+                    mobileNav.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
     }
 
     // Update suggestion highlight
