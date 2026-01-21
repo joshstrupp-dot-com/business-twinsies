@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Twinsies | Find Your Company's Transatlantic Twin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M186.844 99.5C186.844 147.739 147.739 186.844 99.5 186.844C51.2613 186.844 12.1561 147.739 12.1561 99.5C12.1561 51.2613 51.2613 12.1561 99.5 12.1561C147.739 12.1561 186.844 51.2613 186.844 99.5Z" stroke="currentColor" stroke-width="8.31224"/>
+                    <path d="M100 8V191" stroke="currentColor" stroke-width="8.31224"/>
+                    <path d="M187 91V91C131.688 117.55 67.3123 117.55 12 91V91" stroke="currentColor" stroke-width="8.31224"/>
+                    <path d="M91 12V12C40.1088 51.4199 29.278 123.921 66.4269 176.493L70.3182 182" stroke="currentColor" stroke-width="8.31224"/>
+                    <path d="M108 12V12C158.891 51.4199 169.722 123.921 132.573 176.493L128.682 182" stroke="currentColor" stroke-width="8.31224"/>
+                </svg>
+                <span class="logo-text">Business Twinsies</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-view="search">Search</button>
+                <button class="nav-btn" data-view="browse">Browse Categories</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Search View -->
+        <section id="search-view" class="view active">
+            <div class="hero">
+                <h1 class="hero-title">Find Your Business's<br><span class="highlight">Transatlantic Twin</span></h1>
+                <p class="hero-subtitle">Search nearly 50,000 NYC ↔ London business comparisons to discover your company's doppelgänger across the pond.</p>
+            </div>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search for a business name..." autocomplete="off">
+                    <button id="clear-search" class="clear-btn hidden">×</button>
+                </div>
+                <div id="search-suggestions" class="suggestions hidden"></div>
+            </div>
+
+            <div id="comparison-result" class="comparison hidden">
+                <!-- Results will be injected here -->
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-number">47,814</span>
+                    <span class="stat-label">Business Pairs</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">397</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">🇺🇸 ↔ 🇬🇧</span>
+                    <span class="stat-label">NYC & London</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse View -->
+        <section id="browse-view" class="view">
+            <div class="browse-header">
+                <h2 class="browse-title">Browse by Category</h2>
+                <div class="filter-controls">
+                    <label class="filter-label">
+                        <span>Max Similarity Score:</span>
+                        <input type="range" id="similarity-filter" min="0" max="3" step="0.1" value="3">
+                        <span id="similarity-value">3.0</span>
+                    </label>
+                    <span class="filter-hint">Lower = more similar</span>
+                </div>
+            </div>
+
+            <div class="category-search">
+                <input type="text" id="category-search" class="category-search-input" placeholder="Filter categories...">
+            </div>
+
+            <div id="categories-list" class="categories-list">
+                <!-- Categories will be injected here -->
+            </div>
+
+            <div id="category-results" class="category-results hidden">
+                <button id="back-to-categories" class="back-btn">
+                    <svg width="20" height="20" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M176.131 92.0653C182.257 95.1286 182.257 103.871 176.131 106.935L26.645 181.677C19.9259 185.037 12.5506 178.467 15.1145 171.406L40.1931 102.337C40.8586 100.504 40.8586 98.4958 40.1931 96.6631L15.1145 27.5941C12.5506 20.5329 19.9259 13.9629 26.645 17.3225L176.131 92.0653Z" stroke="currentColor" stroke-width="8.31224" transform="rotate(180 100 100)"/>
+                    </svg>
+                    Back to Categories
+                </button>
+                <h3 id="category-title" class="category-title"></h3>
+                <div id="category-businesses" class="businesses-grid">
+                    <!-- Businesses will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Data represents business similarity comparisons between NYC and London companies.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
