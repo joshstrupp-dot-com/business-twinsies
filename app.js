@@ -301,7 +301,7 @@
                             <span class="stat-value">${formatCurrency(nycFirst ? pair.nyc_revenue : pair.london_revenue)}</span>
                         </div>
                         <div class="stat-row">
-                            <span class="stat-label">Employees</span>
+                            <span class="stat-label">${nycFirst ? 'NYC' : 'London'} Employees</span>
                             <span class="stat-value">${formatNumber(nycFirst ? pair.nyc_employees : pair.london_employees)}</span>
                         </div>
                         <div class="stat-row">
@@ -333,7 +333,7 @@
                             <span class="stat-value">${formatCurrency(nycFirst ? pair.london_revenue : pair.nyc_revenue)}</span>
                         </div>
                         <div class="stat-row">
-                            <span class="stat-label">Employees</span>
+                            <span class="stat-label">${nycFirst ? 'London' : 'NYC'} Employees</span>
                             <span class="stat-value">${formatNumber(nycFirst ? pair.london_employees : pair.nyc_employees)}</span>
                         </div>
                         <div class="stat-row">
