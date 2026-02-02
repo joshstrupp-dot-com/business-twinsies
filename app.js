@@ -305,7 +305,7 @@
                             <span class="stat-value">${formatNumber(nycFirst ? pair.nyc_employees : pair.london_employees)}</span>
                         </div>
                         <div class="stat-row">
-                            <span class="stat-label">Founded</span>
+                            <span class="stat-label">Registered</span>
                             <span class="stat-value">${nycFirst ? pair.nyc_founding_year : pair.london_founding_year}</span>
                         </div>
                     </div>
@@ -337,7 +337,7 @@
                             <span class="stat-value">${formatNumber(nycFirst ? pair.london_employees : pair.nyc_employees)}</span>
                         </div>
                         <div class="stat-row">
-                            <span class="stat-label">Founded</span>
+                            <span class="stat-label">Registered</span>
                             <span class="stat-value">${nycFirst ? pair.london_founding_year : pair.nyc_founding_year}</span>
                         </div>
                     </div>
